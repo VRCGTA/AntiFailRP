@@ -51,10 +51,12 @@ Citizen.CreateThread(function()
         if IsPedInAnyVehicle(playerped, false) then
 			wait = 0
 			local veh = GetVehiclePedIsUsing(playerped)
-			if DoesVehicleHaveWeapons(veh) == 1 and vehicleweaponhash ~= 1422046295 then
-				vehicleweapon, vehicleweaponhash = GetCurrentPedVehicleWeapon(playerped)
-				if vehicleweapon == 1 then
-					DisableVehicleWeapon(true, vehicleweaponhash, veh, playerped)
+			if GetEntityModel(veh) ~= `firetruk` then
+				if DoesVehicleHaveWeapons(veh) == 1 and vehicleweaponhash ~= 1422046295 then
+					vehicleweapon, vehicleweaponhash = GetCurrentPedVehicleWeapon(playerped)
+					if vehicleweapon == 1 then
+						DisableVehicleWeapon(true, vehicleweaponhash, veh, playerped)
+					end
 				end
 			end
 		end
